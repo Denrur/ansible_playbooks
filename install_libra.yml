@@ -3,64 +3,69 @@
   hosts: all
   gather_facts: no
   tasks:
-    - name: Install chocolatey
+    - name: Install dotnet3.5
       win_chocolatey:
-        name:
-          - chocolatey
-          - chocolatey-compatibility.extension
-          - chocolatey-core.extension
+        name: dotnet3.5
+        version: '3.5.20160716'
         source: http://172.18.0.7/chocolatey
-        state: present
-    - name: Install libreoffice-fresh
-      win_chocolatey:
-        name: libreoffice-fresh
-        version: '24.2.4'
-        source: http://172.18.0.7/chocolatey
-        state: present
-    - name: Install 7zip
-      win_chocolatey:
-        name: 7zip.install
-        version: '24.7.0'
-        source: http://172.18.0.7/chocolatey
-        state: present
-    - name: Install pycharm-community
-      win_chocolatey:
-        name: pycharm-community
-        version: '2024.1.3'
-        source: http://172.18.0.7/chocolatey
-        state: present
-    - name: Install codeblocks
-      win_chocolatey:
-        name: codeblocks
-        version: '20.3.0.20210213'
-        source: http://172.18.0.7/chocolatey
-        state: present
-    - name: Install openjdk
-      win_chocolatey:
-        name: openjdk
-        version: '22.0.1'
-        source: http://172.18.0.7/chocolatey
-        state: present
-    - name: Install lazarus
-      win_chocolatey:
-        name: lazarus
-        version: '3.4.0'
-        source: http://172.18.0.7/chocolatey
-        state: present
-    - name: Install eclipse
-      win_chocolatey:
-        name: eclipse
-        version: '4.32.0'
-        source: http://172.18.0.7/chocolatey
-        state: present
-    - name: Install mingw
-      win_chocolatey:
-        name: mingw
-        version: '13.2.0'
-        source: http://172.18.0.7/chocolatey
-        state: present
-    - name: Install VSCode
-      win_chocolatey:
-        name: vscode.install
-        source: http://172.18.0.7/chocolatey
+    # - name: Install chocolatey
+    #   win_chocolatey:
+    #     name:
+    #       - chocolatey
+    #       - chocolatey-compatibility.extension
+    #       - chocolatey-core.extension
+    #     source: http://172.18.0.7/chocolatey
+    #     state: present
+    # - name: Install libreoffice-fresh
+    #   win_chocolatey:
+    #     name: libreoffice-fresh
+    #     version: '24.2.4'
+    #     source: http://172.18.0.7/chocolatey
+    #     state: present
+    # - name: Install 7zip
+    #   win_chocolatey:
+    #     name: 7zip.install
+    #     version: '24.7.0'
+    #     source: http://172.18.0.7/chocolatey
+    #     state: present
+    # - name: Install pycharm-community
+    #   win_chocolatey:
+    #     name: pycharm-community
+    #     version: '2024.1.3'
+    #     source: http://172.18.0.7/chocolatey
+    #     state: present
+    # - name: Install codeblocks
+    #   win_chocolatey:
+    #     name: codeblocks
+    #     version: '20.3.0.20210213'
+    #     source: http://172.18.0.7/chocolatey
+    #     state: present
+    # - name: Install openjdk
+    #   win_chocolatey:
+    #     name: openjdk
+    #     version: '22.0.1'
+    #     source: http://172.18.0.7/chocolatey
+    #     state: present
+    # - name: Install lazarus
+    #   win_chocolatey:
+    #     name: lazarus
+    #     version: '3.4.0'
+    #     source: http://172.18.0.7/chocolatey
+    #     state: present
+    # - name: Install eclipse
+    #   win_chocolatey:
+    #     name: eclipse
+    #     version: '4.32.0'
+    #     source: http://172.18.0.7/chocolatey
+    #     state: present
+    # - name: Install mingw
+    #   win_chocolatey:
+    #     name: mingw
+    #     version: '13.2.0'
+    #     source: http://172.18.0.7/chocolatey
+    #     state: present
+    # - name: Install VSCode
+    #   win_chocolatey:
+    #     name: vscode.install
+    #     source: http://172.18.0.7/chocolatey
         state: present
