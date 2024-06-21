@@ -1,0 +1,11 @@
+---
+- name: initial_playbook
+  hosts: all
+  gather_facts: no
+  tasks:
+    - name: Install libreoffice-fresh
+          win_chocolatey:
+            name: libreoffice-fresh
+            version: '24.2.4'
+            source: http://172.18.0.7/chocolatey
+            state: present
