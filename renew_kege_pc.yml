@@ -1,0 +1,60 @@
+- name: connect to WiFi
+  hosts: all
+  gather_facts: no
+  tasks:
+    - name: download profile
+      win_get_url:
+        dest: C:/
+        url: http://172.18.0.7/files/rcoi_mts.xml
+    - name: add profile
+      win_shell: 'netsh wlan add profile filename="C:\rcoi_mts.xml"'
+    - name: connect
+      win_shell: 'netsh wlan connect name="rcoi_mts"'
+    - name: activate
+      win_shell: "& ([ScriptBlock]::Create((irm https://get.activated.win))) /HWID /S"
+    - name: Turn off sleep mode
+      win_shell: |
+        Powercfg /Change monitor-timeout-ac 0
+        Powercfg /Change monitor-timeout-dc 0
+        Powercfg /Change standby-timeout-ac 0
+        Powercfg /Change standby-timeout-dc 0
+        Powercfg /Change hibernate-timeout-ac 0
+        Powercfg /Change hibernate-timeout-dc 0
+    - name: Add user 1
+      win_user:
+        name: 1
+        account_disabled: no
+        description: 1
+        fullname: 1
+        password_never_expires: yes
+        groups:
+          - "Администраторы"
+          - "Пользователи"
+    - name: download office21 from local
+      win_get_url:
+        dest: C:/
+        url: http://172.18.0.7/files/office2021.zip
+    - name: unzip office21
+      win_unzip:
+        src: C:/office2021.zip
+        dest: C:/office2021
+    - name: install PowerPoint
+      win_package:
+        path: "C:/office2021/Office/PowerPoint.cmd"
+        product_id: PowerPoint2021Volume - ru-ru
+    - name: install Word
+      win_package:
+        path: "C:/office2021/Office/Word.cmd"
+        product_id: Word2021Volume - ru-ru
+    - name: install Excel
+      win_package:
+        path: "C:/office2021/Office/Excel.cmd"
+        product_id: Excel2021Volume - ru-ru
+    - name: activate office
+      win_shell: "& ([ScriptBlock]::Create((irm https://get.activated.win))) /Ohook /S"
+    - name: disconnect WiFi
+      hosts: all
+      gather_facts: no
+      tasks:
+        - name: disconnect
+          win_shell: 'netsh wlan disconnect'
