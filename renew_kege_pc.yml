@@ -52,9 +52,7 @@
         product_id: Excel2021Volume - ru-ru
     - name: activate office
       win_shell: "& ([ScriptBlock]::Create((irm https://get.activated.win))) /Ohook /S"
-    - name: disconnect WiFi
-      hosts: all
-      gather_facts: no
-      tasks:
-        - name: disconnect
-          win_shell: 'netsh wlan disconnect'
+
+
+    - name: disconnect
+      win_shell: 'netsh wlan disconnect'
